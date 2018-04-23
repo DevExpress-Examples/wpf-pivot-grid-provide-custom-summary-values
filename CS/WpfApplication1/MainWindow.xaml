@@ -1,0 +1,24 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dxpg="http://schemas.devexpress.com/winfx/2008/xaml/pivotgrid" x:Class="WpfApplication1.MainWindow"
+        xmlns:local="clr-namespace:WpfApplication1"
+        xmlns:e="http://schemas.microsoft.com/expression/2010/interactivity"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.DataContext>
+        <local:MyDataContext/>
+    </Window.DataContext>
+    <Grid>
+        <dxpg:PivotGridControl Name="pivotGridControl1" DataSource="{Binding Path=Data}">
+            <dxpg:PivotGridControl.Fields>
+                <dxpg:PivotGridField FieldName="Row1" Area="RowArea" Name="fieldRow1"/>
+                <dxpg:PivotGridField FieldName="Row2" Area="RowArea" Name="fieldRow2"/>
+                <dxpg:PivotGridField FieldName="Column" Area="ColumnArea" Name="fieldColumn"/>
+                <dxpg:PivotGridField FieldName="Data" Area="DataArea" Name="fieldData" SummaryType="Custom"/>
+            </dxpg:PivotGridControl.Fields>
+            <e:Interaction.Behaviors>
+                <local:CustomTotalGrandTotalBehavior Name="fieldData"/>
+            </e:Interaction.Behaviors>
+        </dxpg:PivotGridControl>
+    </Grid>
+</Window>
