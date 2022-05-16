@@ -9,16 +9,41 @@
         <local:MyDataContext/>
     </Window.DataContext>
     <Grid>
-        <dxpg:PivotGridControl Name="pivotGridControl1" DataSource="{Binding Path=Data}">
+        <dxpg:PivotGridControl Name="pivotGridControl1" 
+                               DataSource="{Binding Path=Data}" 
+                               DataProcessingEngine="Optimized">
             <dxpg:PivotGridControl.Fields>
-                <dxpg:PivotGridField FieldName="Row1" Area="RowArea" Name="fieldRow1"/>
-                <dxpg:PivotGridField FieldName="Row2" Area="RowArea" Name="fieldRow2"/>
-                <dxpg:PivotGridField FieldName="Column" Area="ColumnArea" Name="fieldColumn"/>
-                <dxpg:PivotGridField FieldName="Data" Area="DataArea" Name="fieldData" SummaryType="Custom"/>
+                <dxpg:PivotGridField  Area="RowArea" Name="fieldRowGroup">
+                    <dxpg:PivotGridField.DataBinding>
+                        <dxpg:DataSourceColumnBinding ColumnName="RowGroup"/>
+                    </dxpg:PivotGridField.DataBinding>
+                </dxpg:PivotGridField>
+                <dxpg:PivotGridField Area="RowArea" Name="fieldRow">
+                    <dxpg:PivotGridField.DataBinding>
+                        <dxpg:DataSourceColumnBinding ColumnName="Row"/>
+                    </dxpg:PivotGridField.DataBinding>
+                </dxpg:PivotGridField>
+                <dxpg:PivotGridField Area="ColumnArea" Name="fieldColumnGroup">
+                    <dxpg:PivotGridField.DataBinding>
+                        <dxpg:DataSourceColumnBinding ColumnName="ColumnGroup"/>
+                    </dxpg:PivotGridField.DataBinding>
+                </dxpg:PivotGridField>
+                <dxpg:PivotGridField Area="ColumnArea" Name="fieldColumn">
+                    <dxpg:PivotGridField.DataBinding>
+                        <dxpg:DataSourceColumnBinding ColumnName="Column"/>
+                    </dxpg:PivotGridField.DataBinding>
+                </dxpg:PivotGridField>
+                <dxpg:PivotGridField Area="DataArea" Name="fieldData">
+                    <dxpg:PivotGridField.DataBinding>
+                        <dxpg:ExpressionDataBinding Expression="iif(
+                                                    IsTotal([fieldColumnGroup]),'Grand Total',
+                                                    IsTotal([fieldRowGroup]),'Grand Total',
+                                                    IsTotal([fieldColumn]),'Total',
+                                                    IsTotal([fieldRow]),'Total', 
+                                                    Sum([Data]))"/>
+                    </dxpg:PivotGridField.DataBinding>
+                </dxpg:PivotGridField>
             </dxpg:PivotGridControl.Fields>
-            <e:Interaction.Behaviors>
-                <local:CustomTotalGrandTotalBehavior Name="fieldData"/>
-            </e:Interaction.Behaviors>
         </dxpg:PivotGridControl>
     </Grid>
 </Window>

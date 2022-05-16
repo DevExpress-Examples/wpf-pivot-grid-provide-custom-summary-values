@@ -17,31 +17,25 @@ Namespace WpfApplication1
             End Set
         End Property
 
-        Private Function GetData() As DataTable
-            Dim dt As New DataTable()
-            Dim _r As New Random()
-            dt.Columns.Add("Row1", GetType(Integer))
-            dt.Columns.Add("Row2", GetType(Integer))
-            dt.Columns.Add("Column", GetType(String))
-            dt.Columns.Add("Data", GetType(Integer))
-            dt.Rows.Add(1, 0, "Column0", _r.Next(10))
-            dt.Rows.Add(2, 0, "Column0", _r.Next(10))
-            dt.Rows.Add(3, 0, "Column0", _r.Next(10))
-            dt.Rows.Add(4, 0, "Column0", _r.Next(10))
-            dt.Rows.Add(1, 1, "Column0", _r.Next(10))
-            dt.Rows.Add(2, 1, "Column0", _r.Next(10))
-            dt.Rows.Add(3, 1, "Column0", _r.Next(10))
-            dt.Rows.Add(4, 1, "Column0", _r.Next(10))
-            dt.Rows.Add(1, 0, "Column1", _r.Next(10))
-            dt.Rows.Add(2, 0, "Column1", _r.Next(10))
-            dt.Rows.Add(3, 0, "Column1", _r.Next(10))
-            dt.Rows.Add(4, 0, "Column1", _r.Next(10))
-            dt.Rows.Add(1, 1, "Column1", _r.Next(10))
-            dt.Rows.Add(2, 1, "Column1", _r.Next(10))
-            dt.Rows.Add(3, 1, "Column1", _r.Next(10))
-            dt.Rows.Add(4, 1, "Column1", _r.Next(10))
-            Return dt
-        End Function
+		Private Function GetData() As DataTable
+			Dim dt As New DataTable()
+			Dim rnd As New Random()
+			dt.Columns.Add("RowGroup", GetType(String))
+			dt.Columns.Add("Row", GetType(String))
+			dt.Columns.Add("ColumnGroup", GetType(String))
+			dt.Columns.Add("Column", GetType(String))
+			dt.Columns.Add("Data", GetType(Integer))
+			For rowGroup As Integer = 1 To 4
+				For row As Integer = 1 To 4
+					For columnGroup As Integer = 1 To 4
+						For column As Integer = 1 To 4
+							dt.Rows.Add("Row Group" & rowGroup, "Row" & row, "Column Group" & columnGroup, "Column" & column, rnd.Next(100))
+						Next column
+					Next columnGroup
+				Next row
+			Next rowGroup
+			Return dt
+		End Function
 
-    End Class
+	End Class
 End Namespace
