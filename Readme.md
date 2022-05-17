@@ -6,7 +6,6 @@
 <!-- default file list -->
 *Files to look at*:
 
-* [CustomTotalGrandTotalBehavior.cs](./CS/WpfApplication1/CustomTotalGrandTotalBehavior.cs) (VB: [CustomTotalGrandTotalBehavior.vb](./VB/WpfApplication1/CustomTotalGrandTotalBehavior.vb))
 * [MainWindow.xaml](./CS/WpfApplication1/MainWindow.xaml) (VB: [MainWindow.xaml](./VB/WpfApplication1/MainWindow.xaml))
 * [MyDataContext.cs](./CS/WpfApplication1/MyDataContext.cs) (VB: [MyDataContext.vb](./VB/WpfApplication1/MyDataContext.vb))
 <!-- default file list end -->
