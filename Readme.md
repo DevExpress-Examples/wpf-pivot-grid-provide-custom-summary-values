@@ -26,7 +26,7 @@ Follow the steps below to create a custom summary.
     ```
     iif(IsTotal([fieldColumnGroup]),'Grand Total',IsTotal([fieldRowGroup]),'Grand Total',IsTotal([fieldColumn]),'Total',IsTotal([fieldRow]),'Total',Sum([Data]))
     ``` 
-3. Assign the ExpressionDataBinding instance to the _fieldData_ field's [DataBinding](https://docs.devexpress.com/WPF/DevExpress.Xpf.PivotGrid.PivotGridField.DataBinding?p=netframework) property.
+3. Assign the `ExpressionDataBinding` instance to the _fieldData_ field's [DataBinding](https://docs.devexpress.com/WPF/DevExpress.Xpf.PivotGrid.PivotGridField.DataBinding?p=netframework) property.
 
 ## Documentation
 
