@@ -11,7 +11,7 @@ This example demonstrates how to determine the value type when you calculate cus
 ![Pivot Grid](image/image.png)
 
 <!-- default file list -->
-## Files to Look at
+## Files to Review
 
 * [MainWindow.xaml](./CS/WpfApplication1/MainWindow.xaml) (VB: [MainWindow.xaml](./VB/WpfApplication1/MainWindow.xaml))
 * [MyDataContext.cs](./CS/WpfApplication1/MyDataContext.cs) (VB: [MyDataContext.vb](./VB/WpfApplication1/MyDataContext.vb))
