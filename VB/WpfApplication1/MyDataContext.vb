@@ -1,25 +1,29 @@
-﻿Imports System
+Imports System
 Imports System.Data
 
 Namespace WpfApplication1
+
     Public Class MyDataContext
+
+        Private _Data As DataTable
+
         Public Sub New()
             Data = GetData()
         End Sub
 
-        Private privateData As DataTable
-        Public Property Data() As DataTable
+        Public Property Data As DataTable
             Get
-                Return privateData
+                Return _Data
             End Get
+
             Private Set(ByVal value As DataTable)
-                privateData = value
+                _Data = value
             End Set
         End Property
 
         Private Function GetData() As DataTable
-            Dim dt As New DataTable()
-            Dim _r As New Random()
+            Dim dt As DataTable = New DataTable()
+            Dim _r As Random = New Random()
             dt.Columns.Add("Row1", GetType(Integer))
             dt.Columns.Add("Row2", GetType(Integer))
             dt.Columns.Add("Column", GetType(String))
@@ -42,6 +46,5 @@ Namespace WpfApplication1
             dt.Rows.Add(4, 1, "Column1", _r.Next(10))
             Return dt
         End Function
-
     End Class
 End Namespace
